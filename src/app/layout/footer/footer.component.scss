@@ -1,0 +1,25 @@
+:host {
+  width: 100%;
+}
+
+.footer-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-app-name {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.footer-separator {
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.footer-author {
+  justify-content: flex-start;
+  align-items: center;
+}
