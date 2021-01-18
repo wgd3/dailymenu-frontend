@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Custom theme stuff and overrides need to be declared before Bootstrap's imports
 @import 'assets/theme/theme';
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import '~ngx-toastr/toastr-bs4-alert';
+
 
 html, body {
   height: 100%;

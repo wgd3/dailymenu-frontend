@@ -1,0 +1,38 @@
+<div class="row no-gutters py-3 mb-3 border-bottom">
+  <div class="col d-flex justify-content-start align-items-end">
+    <h6>{{ (recipes$ | async).length }} Recipes</h6>
+  </div>
+
+  <div class="col d-flex justify-content-end align-items-end">
+    <button
+      class="btn btn-sm btn-success"
+      type="button"
+      [routerLink]="['/recipes/new']"
+    >
+      Add Recipe
+    </button>
+  </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-4">
+  <div class="col" *ngFor="let recipe of recipes$ | async">
+    <div class="card mb-3 text-dark">
+      <div class="card-img-wrapper">
+        <img [src]="recipe.image_url" class="card-img-top" />
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">
+          <a [routerLink]="['/recipes', recipe.id]" href>{{ recipe.name }}</a>
+        </h5>
+        <p class="card-text d-none d-md-block text-right">
+          <small class="text-muted">
+            <a class="" [routerLink]="recipe.url" href>{{
+              recipe.source ? recipe.source : "Link"
+            }}</a>
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

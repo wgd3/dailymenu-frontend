@@ -1,0 +1,96 @@
+<div class="row mb-3">
+  <div
+    class="col-md-8 py-3 my-3 d-md-flex text-center flex-column justify-content-center align-items-center"
+  >
+    <h3>{{ recipe.name }}</h3>
+
+    <h6>
+      <span
+        class="badge badge-warning"
+        *ngFor="let tag of recipe.tags; let i = index"
+        [class.ml-3]="i > 0"
+        >{{ tag.name }}</span
+      >
+    </h6>
+
+    <small class="py-3"
+      >Source:
+      <a [href]="recipe.url" class="text-light" target="_blank">{{
+        recipe.source || "Link"
+      }}</a>
+    </small>
+  </div>
+
+  <div class="col-md-4 py-3">
+    <img class="img-fluid" [src]="recipe.image_url" />
+  </div>
+</div>
+
+<!--<div class="row my-3" *ngIf="recipe.tags.length > 0">-->
+<!--  <div class="col d-flex justify-content-center align-items-center">-->
+<!--    <h6>-->
+<!--      <span-->
+<!--        class="badge badge-warning"-->
+<!--        *ngFor="let tag of recipe.tags; let i = index"-->
+<!--        [class.ml-3]="i > 0"-->
+<!--        >{{ tag.name }}</span-->
+<!--      >-->
+<!--    </h6>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="row mb-3">
+  <div class="col-md-6 order-1">
+    <h5 class="mb-3 border-bottom">Nutrition</h5>
+  </div>
+
+  <div class="col-md-6 order-3 order-md-2">
+    <h5 class="mb-3 border-bottom">Details</h5>
+  </div>
+
+  <div class="col-md-6 order-2 order-md-3">
+    <table class="table table-sm table-borderless nutrition-table">
+      <tr>
+        <td class="nutrition-table-cell">
+          {{ recipe.servings > 0 ? recipe.servings : "1" }} Servings
+        </td>
+        <td class="nutrition-table-cell">
+          {{ recipe.calories || 0 }} calories
+        </td>
+      </tr>
+      <tr>
+        <td class="nutrition-table-cell">{{ recipe.protein || 0 }}g Protein</td>
+        <td class="nutrition-table-cell">{{ recipe.fiber || 0 }}g Fiber</td>
+      </tr>
+      <tr>
+        <td class="nutrition-table-cell">{{ recipe.fat || 0 }}g Fat</td>
+        <td class="nutrition-table-cell">{{ recipe.sodium || 0 }}mg Sodium</td>
+      </tr>
+      <tr>
+        <td class="nutrition-table-cell">
+          {{ recipe.carbohydrates || 0 }}g Carbs
+        </td>
+        <td class="nutrition-table-cell"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="col-md-6 order-4">
+    <table class="table table-sm table-borderless nutrition-table">
+      <tr>
+        <td>Recipe Type</td>
+        <td>
+          {{ recipe.recipe_type | titlecase }}
+        </td>
+      </tr>
+      <tr>
+        <td>Chef</td>
+        <td>
+          {{ recipe.author || "Unknown" }}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="row mb-3"></div>

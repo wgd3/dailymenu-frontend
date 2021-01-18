@@ -1,0 +1,30 @@
+<div class="row no-gutters">
+  <div class="col-md-6 order-1 px-3">
+    <h1>Import Recipe</h1>
+  </div>
+
+  <div class="col-md-6 order-2 order-md-3 px-3">
+    <form [formGroup]="importForm">
+      <div class="form-group">
+        <label>Recipe URL</label>
+        <input class="form-control" formControlName="url" type="url" />
+      </div>
+
+      <div class="form-row">
+        <div class="col d-flex justify-content-center align-items-center">
+          <button class="btn btn-success" [disabled]="importForm.invalid">
+            Import Recipe
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-md-6 order-3 order-md-2 px-3">
+    <h1>Recipe Details</h1>
+  </div>
+
+  <div class="col-md-6 order-4 px-3">
+    <dm-recipe-form></dm-recipe-form>
+  </div>
+</div>

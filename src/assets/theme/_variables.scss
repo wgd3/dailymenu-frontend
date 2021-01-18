@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Montserrat&family=Open+Sans:ital,wght@0,400;0,600;0,800;1,400&display=swap');
+
+// Overrides for Bootstrap vars
+
+/// Custom theme from Themestr.app
+$primary:#083358;
+$secondary:#F67280;
+$success:#0074E4;
+$danger:#FF4057;
+$info:#74DBEF;
+$warning:#FC3C3C;
+$light:#F2F2F0;
+$dark:#072247;
+
+$body-bg: $primary;
+$body-color: $light;
+
+$enable-rounded: false;
+$spacer: 0.5rem;
+
+$border-width: 1px;
+$btn-border-radius: .25rem;
+
+$headings-margin-bottom: 0;
+
+// Typography
+
+$font-family-base: "Open Sans", "Helvetica", "Arial", sans-serif;
+$font-family-monospace: "Inconsolata", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+$headings-font-family: "Montserrat", "Helvetica", sans-serif;
+$headings-font-weight: 400;
+
+$font-weight-bold: 800;
+
+// Cards
+
+$card-spacer-x: 0.5rem;
+$card-spacer-y: 0.25rem;
