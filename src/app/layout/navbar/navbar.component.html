@@ -1,21 +1,44 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
   <a [routerLink]="['/']" class="navbar-brand" href>DailyMenu</a>
-  <button (click)="isCollapsed = !isCollapsed" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-          class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse"
-          type="button">
+  <button
+    (click)="isCollapsed = !isCollapsed"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    class="navbar-toggler"
+    data-target="#navbarSupportedContent"
+    data-toggle="collapse"
+    type="button"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div [collapse]="isCollapsed" [isAnimated]="true" class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div
+    [collapse]="isCollapsed"
+    [isAnimated]="true"
+    class="collapse navbar-collapse"
+    id="navbarSupportedContent"
+  >
     <ul class="navbar-nav mr-auto">
-
       <li class="nav-item">
-        <a [routerLinkActiveOptions]="{exact: true}" [routerLinkActive]="'active'" [routerLink]="['/']" class="nav-link"
-           href>Home <span class="sr-only">(current)</span></a>
+        <a
+          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLinkActive]="'active'"
+          [routerLink]="['/']"
+          class="nav-link"
+          href
+          >Home <span class="sr-only">(current)</span></a
+        >
       </li>
 
       <li *ngFor="let link of menuLinks" class="nav-item">
-        <a [routerLinkActive]="'active'" [routerLink]="[link.url]" class="nav-link" href>{{ link.name }}</a>
+        <a
+          [routerLinkActive]="'active'"
+          [routerLink]="[link.url]"
+          class="nav-link"
+          href
+          >{{ link.name }}</a
+        >
       </li>
     </ul>
   </div>

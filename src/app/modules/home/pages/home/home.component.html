@@ -1,25 +1,37 @@
-<div class="d-flex flex-column">
+<div class="d-flex flex-column h-100">
   <div class="row no-gutters mb-3 flex-grow-0">
-    <div class="col d-flex flex-column justify-content-center align-items-center py-3">
-      <h1>{{ date$ | async | date:'EEEE'}}</h1>
-      <h5>{{ date$ | async | date:'longDate'}}</h5>
+    <div
+      class="col d-flex flex-column justify-content-center align-items-center py-3"
+    >
+      <h1>{{ date$ | async | date: "EEEE" }}</h1>
+      <h5>{{ date$ | async | date: "longDate" }}</h5>
     </div>
   </div>
 
   <div class="row no-gutters my-3 flex-grow-0">
     <div class="col py-1 border-bottom">
-      <h6>Menu For {{ date$ | async | date:'shortDate'}}</h6>
+      <h6>Menu For {{ date$ | async | date: "shortDate" }}</h6>
     </div>
   </div>
 
   <ng-container *ngIf="meal$ | async as meal; else noRecipes">
     <ng-container *ngIf="meal.recipes.length > 0; else noRecipes">
-      <div class="row no-gutters py-3 flex-grow-1" *ngFor="let recipe of meal.recipes">
-        <div class="col-md-4 col-12">
-          <img [src]="recipe.image_url" class="img-fluid">
-        </div>
-        <div class="col">
-          <p class="px-md-3">{{ recipe.name }}</p>
+      <!--      <div class="row no-gutters py-3 flex-grow-1" *ngFor="let recipe of meal.recipes">-->
+      <!--        <div class="col-md-4 col-12">-->
+      <!--          <img [src]="recipe.image_url" class="img-fluid">-->
+      <!--        </div>-->
+      <!--        <div class="col">-->
+      <!--          <p class="px-md-3">{{ recipe.name }}</p>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <div
+        class="row no-gutters py-3 flex-grow-1 flex-column flex-sm-row justify-content-center align-items-center align-items-sm-start"
+      >
+        <div
+          class="col justify-content-start align-items-center"
+          *ngFor="let recipe of meal.recipes"
+        >
+          <dm-recipe-card [recipe]="recipe"></dm-recipe-card>
         </div>
       </div>
     </ng-container>
@@ -33,5 +45,3 @@
     </div>
   </ng-template>
 </div>
-
-

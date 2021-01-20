@@ -33,6 +33,12 @@ export class ApiService {
       .pipe(map((resp) => resp.data));
   }
 
+  public importRecipe(url: string): Observable<IRecipe> {
+    return this.http
+      .post<IApiResponse<IRecipe>>(`${this.BASE_URL}/recipes/import`, { url })
+      .pipe(map((resp) => resp.data));
+  }
+
   public addRecipe(
     recipe: OptionalExceptFor<IRecipe, 'name'>
   ): Observable<IRecipe> {

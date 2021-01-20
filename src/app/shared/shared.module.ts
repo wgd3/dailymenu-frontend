@@ -6,9 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ToastrModule } from 'ngx-toastr';
+import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [RecipeCardComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
     CollapseModule,
     ToastrModule,
     AccordionModule,
+    RecipeCardComponent,
   ],
 })
 export class SharedModule {}

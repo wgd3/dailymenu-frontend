@@ -5,6 +5,8 @@ import { Validators } from '@angular/forms';
 import { FormControl, FormGroup } from '@ngneat/reactive-forms';
 import { ApiService } from '@app/services/api.service';
 import { take } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'dm-recipe-form',
@@ -32,7 +34,7 @@ export class RecipeFormComponent implements OnInit {
 
   public tags: IRecipeTag[] = [];
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.api
@@ -44,5 +46,24 @@ export class RecipeFormComponent implements OnInit {
             a.name.localeCompare(b.name)
           ))
       );
+  }
+
+  public submitRecipe(): void {
+    if (this.recipeForm.valid) {
+      this.api
+        .addRecipe({ ...this.recipeForm.value })
+        .pipe(take(1))
+        .subscribe(
+          (recipe) => {
+            this.toastr.success(
+              `Recipe '${recipe.name}' was created successfully!`
+            );
+            this.recipeForm.reset();
+          },
+          (err: HttpErrorResponse) => {
+            this.toastr.error(`Error: ${err.message}`);
+          }
+        );
+    }
   }
 }

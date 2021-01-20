@@ -12,7 +12,11 @@
 
       <div class="form-row">
         <div class="col d-flex justify-content-center align-items-center">
-          <button class="btn btn-success" [disabled]="importForm.invalid">
+          <button
+            class="btn btn-success"
+            [disabled]="importForm.invalid"
+            (click)="submitImportForm()"
+          >
             Import Recipe
           </button>
         </div>

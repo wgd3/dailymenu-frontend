@@ -124,7 +124,11 @@
   <div class="form-row py-3">
     <div class="col d-flex justify-content-center align-items-center">
       <button class="btn btn-outline-light">Reset</button>
-      <button class="btn btn-success ml-3" [disabled]="recipeForm.invalid">
+      <button
+        class="btn btn-success ml-3"
+        [disabled]="recipeForm.invalid"
+        (click)="submitRecipe()"
+      >
         Save Recipe
       </button>
     </div>

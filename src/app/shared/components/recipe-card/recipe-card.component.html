@@ -1,0 +1,14 @@
+<div class="recipe-container">
+  <div class="recipe-img-wrapper" *ngIf="recipe?.image_url">
+    <img [src]="recipe?.image_url" class="recipe-img" />
+  </div>
+
+  <div class="recipe-body">
+    <div class="recipe-tags" *ngIf="recipe?.tags?.length > 0"></div>
+    <h6 class="recipe-name">{{ recipe?.name }}</h6>
+
+    <div class="recipe-footer">
+      <small class="recipe-servings">{{ recipe?.servings }} Servings</small>
+    </div>
+  </div>
+</div>
