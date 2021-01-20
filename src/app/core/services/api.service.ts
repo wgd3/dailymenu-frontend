@@ -13,8 +13,13 @@ import { environment } from '../../../environments/environment';
 })
 export class ApiService {
   public readonly BASE_URL = environment.api_url;
+  public readonly production = environment.production;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log(
+      `[ApiService] Using API URL: ${this.BASE_URL} (production: ${this.production}`
+    );
+  }
 
   public listRecipes(): Observable<IRecipe[]> {
     return this.http
