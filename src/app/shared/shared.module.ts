@@ -7,6 +7,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ToastrModule } from 'ngx-toastr';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
+import { ContentLoaderModule } from '@ngneat/content-loader';
 
 @NgModule({
   declarations: [RecipeCardComponent],
@@ -18,6 +19,7 @@ import { RecipeCardComponent } from './components/recipe-card/recipe-card.compon
     CollapseModule.forRoot(),
     AccordionModule.forRoot(),
     ToastrModule.forRoot(),
+    ContentLoaderModule,
   ],
   exports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { RecipeCardComponent } from './components/recipe-card/recipe-card.compon
     ToastrModule,
     AccordionModule,
     RecipeCardComponent,
+    ContentLoaderModule,
   ],
 })
 export class SharedModule {}

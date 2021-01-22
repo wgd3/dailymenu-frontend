@@ -12,12 +12,38 @@ $border-radius: 8px;
   border-radius: $border-radius;
 }
 
+.no-recipe-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+  top: 0;
+  left:0;
+  color: variables.$primary;
+  cursor: pointer;
+}
+
 .recipe-body {
   flex: 1 1 auto;
   padding: variables.$spacer;
   > .recipe-name {
     margin-bottom: variables.$spacer;
   }
+
+  & .badge {
+    + .badge {
+      margin-left: variables.$spacer;
+    }
+  }
+}
+
+.recipe-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .recipe-img-wrapper {

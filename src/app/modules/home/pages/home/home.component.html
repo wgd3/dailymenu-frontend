@@ -16,22 +16,15 @@
 
   <ng-container *ngIf="meal$ | async as meal; else noRecipes">
     <ng-container *ngIf="meal.recipes.length > 0; else noRecipes">
-      <!--      <div class="row no-gutters py-3 flex-grow-1" *ngFor="let recipe of meal.recipes">-->
-      <!--        <div class="col-md-4 col-12">-->
-      <!--          <img [src]="recipe.image_url" class="img-fluid">-->
-      <!--        </div>-->
-      <!--        <div class="col">-->
-      <!--          <p class="px-md-3">{{ recipe.name }}</p>-->
-      <!--        </div>-->
-      <!--      </div>-->
       <div
         class="row no-gutters py-3 flex-grow-1 flex-column flex-sm-row justify-content-center align-items-center align-items-sm-start"
       >
         <div
-          class="col justify-content-start align-items-center"
+          class="col d-sm-flex justify-content-start align-items-center"
           *ngFor="let recipe of meal.recipes"
         >
           <dm-recipe-card [recipe]="recipe"></dm-recipe-card>
+          <dm-recipe-card class="ml-5"></dm-recipe-card>
         </div>
       </div>
     </ng-container>
