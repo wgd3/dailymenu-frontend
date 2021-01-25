@@ -1,0 +1,41 @@
+<div class="row my-3 py-3 no-gutters">
+  <div class="col border-bottom">
+    <h2>Overview for {{ date | date: "shortDate" }}</h2>
+  </div>
+</div>
+
+<div class="row no-gutters py-3">
+  <div class="col d-flex justify-content-start align-items-center">
+    <div class="card-wrapper" *ngFor="let recipe of (meal$ | async).recipes">
+      <dm-recipe-card [recipe]="recipe"></dm-recipe-card>
+    </div>
+
+    <div class="add-recipe-wrapper">
+      <h5>Add Recipe</h5>
+
+      <form [formGroup]="form" class="add-recipe-form">
+        <div class="my-3">
+          <label for="recipeSelect" class="form-label">Select Recipe</label>
+          <select
+            formControlName="recipe"
+            class="form-select"
+            id="recipeSelect"
+          >
+            <option *ngFor="let recipe of recipes$ | async" [value]="recipe.id">
+              {{ recipe.name }}
+            </option>
+          </select>
+        </div>
+      </form>
+
+      <button
+        class="btn btn-primary add-recipe-btn"
+        type="button"
+        (click)="saveRecipe()"
+        [disabled]="form.invalid"
+      >
+        Add Recipe
+      </button>
+    </div>
+  </div>
+</div>

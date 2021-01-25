@@ -1,0 +1,13 @@
+.card-header {
+  &:hover {
+
+  }
+  & a {
+    text-decoration: none;
+    color: black;
+  }
+
+  & .calendar-day-header {
+    cursor: pointer;
+  }
+}

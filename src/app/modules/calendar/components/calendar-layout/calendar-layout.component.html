@@ -1,0 +1,32 @@
+<div class="row no-gutters">
+  <div class="col">
+    <ng-container *ngIf="calendar$ | async as calendar">
+      <ng-container *ngFor="let week of calendar.weeks">
+        <div class="card-group mb-3">
+          <div
+            *ngFor="let day of week.days"
+            [ngClass]="{
+              'text-white bg-secondary': !day.isDayInMonth
+            }"
+            class="card"
+          >
+            <div
+              [class.text-info]="isToday(day.date, today)"
+              class="card-header d-flex justify-content-end align-items-center"
+            >
+              <h5
+                class="mb-0 calendar-day-header"
+                routerLink="/calendar/{{ day.date | date: 'y-MM-dd' }}"
+              >
+                {{ day.date | date: "dd" }}
+              </h5>
+            </div>
+            <div class="card-body">
+              <dm-calendar-day [meals]="meals" [day]="day"></dm-calendar-day>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

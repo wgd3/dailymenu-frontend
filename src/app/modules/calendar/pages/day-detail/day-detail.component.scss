@@ -1,0 +1,40 @@
+@use 'src/assets/theme/variables';
+.card-wrapper {
+  + .card-wrapper {
+    margin-left: 2 * variables.$spacer;
+  }
+}
+
+.add-recipe-wrapper {
+  margin-left: 2 * variables.$spacer;
+  width: 17rem;
+  height: 21rem;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
+  border-radius: 0.5rem;
+  padding: variables.$spacer;
+
+  & .add-recipe-form {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    justify-content: center;
+
+    & #recipeSelect {
+      width: 100%;
+    }
+  }
+
+  & .add-recipe-btn {
+    justify-self: flex-end;
+    align-self: stretch;
+    margin: -1 * variables.$spacer;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+}

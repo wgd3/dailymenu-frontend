@@ -1,0 +1,13 @@
+<div class="row no-gutters">
+  <div
+    class="col d-flex justify-content-center align-items-center border-bottom"
+  >
+    <dm-calendar-month-display></dm-calendar-month-display>
+  </div>
+</div>
+
+<div class="row no-gutters">
+  <div class="col py-3">
+    <dm-calendar-layout [meals]="meals$ | async"></dm-calendar-layout>
+  </div>
+</div>

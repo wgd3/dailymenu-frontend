@@ -139,11 +139,11 @@ export class ApiService {
     );
   }
 
-  public assignRecipeToMeal(date: Date, recipe_id: number): Observable<IMeal> {
+  public assignRecipeToMeal(date: Date, recipes: number[]): Observable<IMeal> {
     return this.http
       .post<IApiResponse<IMeal>>(`${this.BASE_URL}/meals`, {
         date: format(date, 'yyyy-MM-dd'),
-        recipe_id,
+        recipes,
       })
       .pipe(map((resp) => resp.data));
   }

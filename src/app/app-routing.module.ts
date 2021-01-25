@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {PageLayoutComponent} from './layout/page-layout/page-layout.component';
+import { PageLayoutComponent } from './layout/page-layout/page-layout.component';
 
 const routes: Routes = [
   {
@@ -9,18 +9,27 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('@modules/home/home.module').then(m => m.HomeModule)
+        loadChildren: () =>
+          import('@modules/home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'recipes',
-        loadChildren: () => import('@modules/recipe/recipe.module').then(m => m.RecipeModule)
-      }
-    ]
-  }
+        loadChildren: () =>
+          import('@modules/recipe/recipe.module').then((m) => m.RecipeModule),
+      },
+      {
+        path: 'calendar',
+        loadChildren: () =>
+          import('@modules/calendar/calendar.module').then(
+            (m) => m.CalendarModule
+          ),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

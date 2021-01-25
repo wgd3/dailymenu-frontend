@@ -81,7 +81,6 @@ export class RecipeListComponent implements OnInit, OnDestroy {
         this.recipes$.pipe(
           map((recipes) =>
             recipes.filter((r) => {
-              console.log(`filtering ${r.name}`);
               let searchMatch = false;
               let proteinMatch = false;
               let fatMatch = false;
@@ -119,7 +118,6 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   public ngOnDestroy() {}
 
   public toggleFilterCollapse(name: string) {
-    console.log(`Toggling ${name}`);
     this.collapseTracker = {
       ...this.collapseTracker,
       [name]: !this.collapseTracker[name],
