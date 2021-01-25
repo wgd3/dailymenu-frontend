@@ -8,9 +8,12 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ToastrModule } from 'ngx-toastr';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 import { ContentLoaderModule } from '@ngneat/content-loader';
+import { DateControllerComponent } from './components/date-controller/date-controller.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
-  declarations: [RecipeCardComponent],
+  declarations: [RecipeCardComponent, DateControllerComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -19,7 +22,9 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
     CollapseModule.forRoot(),
     AccordionModule.forRoot(),
     ToastrModule.forRoot(),
+    BsDropdownModule.forRoot(),
     ContentLoaderModule,
+    NgxSliderModule,
   ],
   exports: [
     CommonModule,
@@ -31,6 +36,9 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
     AccordionModule,
     RecipeCardComponent,
     ContentLoaderModule,
+    DateControllerComponent,
+    BsDropdownModule,
+    NgxSliderModule,
   ],
 })
 export class SharedModule {}

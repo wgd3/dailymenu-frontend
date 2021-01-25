@@ -1,7 +1,14 @@
-<div class="recipe-container">
+<div class="recipe-container recipe-container-{{ size }}">
   <ng-container *ngIf="recipe; else noRecipe">
     <div class="recipe-img-wrapper" *ngIf="recipe?.image_url">
       <img [src]="recipe?.image_url" class="recipe-img" />
+      <div class="recipe-tag-overlay" *ngIf="recipe?.tags?.length > 0">
+        <span
+          class="badge bg-info text-white"
+          *ngFor="let tag of recipe.tags"
+          >{{ tag.name }}</span
+        >
+      </div>
     </div>
 
     <div class="recipe-body">
@@ -10,15 +17,17 @@
       </h6>
 
       <div class="recipe-footer">
-        <small class="recipe-servings">{{ recipe?.servings }} Servings</small>
+        <small class="recipe-servings"
+          >{{ recipe?.servings || 1 }} Servings</small
+        >
 
-        <div class="recipe-tags" *ngIf="recipe?.tags?.length > 0">
-          <span
-            class="badge bg-info text-white"
-            *ngFor="let tag of recipe.tags"
-            >{{ tag.name }}</span
-          >
-        </div>
+        <!--        <div class="recipe-tags" *ngIf="recipe?.tags?.length > 0">-->
+        <!--          <span-->
+        <!--            class="badge bg-info text-white"-->
+        <!--            *ngFor="let tag of recipe.tags"-->
+        <!--            >{{ tag.name }}</span-->
+        <!--          >-->
+        <!--        </div>-->
       </div>
     </div>
   </ng-container>

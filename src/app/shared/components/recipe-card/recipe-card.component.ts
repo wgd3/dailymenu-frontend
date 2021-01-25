@@ -9,6 +9,8 @@ import { IRecipe } from '@shared/models';
 export class RecipeCardComponent implements OnInit {
   @Input() public recipe: IRecipe;
 
+  @Input() public size: 'sm' | 'md' | 'lg' = 'md';
+
   constructor() {}
 
   ngOnInit(): void {}

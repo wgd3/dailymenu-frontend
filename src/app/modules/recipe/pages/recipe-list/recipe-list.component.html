@@ -1,6 +1,6 @@
-<div class="row no-gutters py-3 mb-3 border-bottom">
+<div class="row no-gutters py-3 mb-3 border-bottom mx-4">
   <div class="col d-flex justify-content-start align-items-end">
-    <h6>{{ (recipes$ | async).length }} Recipes</h6>
+    <h6>{{ (filteredRecipes$ | async).length }} Recipes</h6>
   </div>
 
   <div class="col d-flex justify-content-end align-items-end">
@@ -11,28 +11,170 @@
     >
       Add Recipe
     </button>
+
+    <div class="ml-3 btn-group" dropdown>
+      <button class="btn btn-sm btn-primary" type="button">Sort By</button>
+      <button
+        class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split"
+        type="button"
+        dropdownToggle
+      >
+        {{ sortBy | titlecase }} ({{ sortOrder | titlecase }})
+        <span class="caret"></span>
+      </button>
+
+      <ul
+        *dropdownMenu
+        class="dropdown-menu"
+        role="menu"
+        aria-labelledby="button-split"
+      >
+        <li
+          role="menuitem"
+          class="dropdown-item"
+          (click)="selectSortBy('name')"
+        >
+          Recipe Name
+        </li>
+        <li
+          role="menuitem"
+          class="dropdown-item"
+          (click)="selectSortBy('time_created')"
+        >
+          Time Created
+        </li>
+        <li
+          role="menuitem"
+          class="dropdown-item"
+          (click)="selectSortBy('calories')"
+        >
+          Calories
+        </li>
+        <li
+          role="menuitem"
+          class="dropdown-item"
+          (click)="selectSortBy('protein')"
+        >
+          Protein
+        </li>
+        <li role="menuitem" class="dropdown-item" (click)="selectSortBy('fat')">
+          Fat
+        </li>
+        <li
+          role="menuitem"
+          class="dropdown-item"
+          (click)="selectSortBy('carbs')"
+        >
+          Carbs
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
-<div class="row row-cols-1 row-cols-md-4">
-  <div class="col" *ngFor="let recipe of recipes$ | async">
-    <div class="card mb-3 text-dark">
-      <div class="card-img-wrapper">
-        <img [src]="recipe.image_url" class="card-img-top" />
+<div class="row no-gutters mx-4">
+  <div class="col-12 col-sm-3 filter-container">
+    <h3>Filters</h3>
+
+    <form class="mt-4" [formGroup]="filterForm">
+      <div class="form-row">
+        <div class="col">
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Search..."
+            formControlName="search"
+          />
+        </div>
       </div>
 
-      <div class="card-body">
-        <h5 class="card-title">
-          <a [routerLink]="['/recipes', recipe.id]" href>{{ recipe.name }}</a>
-        </h5>
-        <p class="card-text d-none d-md-block text-right">
-          <small class="text-muted">
-            <a class="" [routerLink]="recipe.url" href>{{
-              recipe.source ? recipe.source : "Link"
-            }}</a>
-          </small>
-        </p>
-      </div>
-    </div>
+      <ul class="list-group list-group-flush mt-4">
+        <li class="list-group-item filter-item">
+          <h6
+            class="dropdown-toggle"
+            (click)="toggleFilterCollapse('calories')"
+          >
+            Calories
+            <span class="caret"></span>
+          </h6>
+          <div
+            class="slider-collapse"
+            [collapse]="collapseTracker.calories"
+            [isAnimated]="true"
+          >
+            <ngx-slider
+              [options]="filterRangeOptions.calories"
+              [value]="0"
+              [highValue]="2000"
+              formControlName="calories"
+            ></ngx-slider>
+          </div>
+        </li>
+        <li class="list-group-item filter-item">
+          <h6 class="dropdown-toggle" (click)="toggleFilterCollapse('protein')">
+            Protein
+            <span class="caret"></span>
+          </h6>
+          <div
+            class="slider-collapse"
+            [collapse]="collapseTracker.protein"
+            [isAnimated]="true"
+          >
+            <ngx-slider
+              [options]="filterRangeOptions.protein"
+              [value]="0"
+              [highValue]="200"
+              formControlName="protein"
+            ></ngx-slider>
+          </div>
+        </li>
+        <li class="list-group-item filter-item">
+          <h6 class="dropdown-toggle" (click)="toggleFilterCollapse('fat')">
+            Fat
+            <span class="caret"></span>
+          </h6>
+          <div
+            class="slider-collapse"
+            [collapse]="collapseTracker.fat"
+            [isAnimated]="true"
+          >
+            <ngx-slider
+              [options]="filterRangeOptions.fat"
+              [value]="0"
+              [highValue]="200"
+              formControlName="fat"
+            ></ngx-slider>
+          </div>
+        </li>
+        <li class="list-group-item filter-item">
+          <h6 class="dropdown-toggle" (click)="toggleFilterCollapse('carbs')">
+            Carbs
+            <span class="caret"></span>
+          </h6>
+          <div
+            class="slider-collapse"
+            [collapse]="collapseTracker.carbs"
+            [isAnimated]="true"
+          >
+            <ngx-slider
+              [options]="filterRangeOptions.carbs"
+              [value]="0"
+              [highValue]="300"
+              formControlName="carbs"
+            ></ngx-slider>
+          </div>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <div class="col-sm-9 col-12 recipe-grid">
+    <dm-recipe-card
+      *ngFor="
+        let recipe of filteredRecipes$ | async | recipeSort: sortBy:sortOrder
+      "
+      [recipe]="recipe"
+      [size]="'sm'"
+      class="mb-3"
+    ></dm-recipe-card>
   </div>
 </div>

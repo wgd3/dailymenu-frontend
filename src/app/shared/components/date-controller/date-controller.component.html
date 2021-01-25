@@ -1,0 +1,13 @@
+<div
+  class="controller-container"
+  [ngClass]="{
+    'align-items-start': align === 'start',
+    'align-items-center': align === 'center',
+    'align-items-end': align === 'end'
+  }"
+>
+  <div class="controller-day">{{ currentDate$ | async | date: "EEEE" }}</div>
+  <div class="controller-date">
+    {{ currentDate$ | async | date: "longDate" }}
+  </div>
+</div>

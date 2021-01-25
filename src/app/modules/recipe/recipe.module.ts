@@ -7,6 +7,7 @@ import { RecipeDetailComponent } from './pages/recipe-detail/recipe-detail.compo
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { SharedModule } from '@shared/shared.module';
 import { NewRecipeComponent } from './pages/new-recipe/new-recipe.component';
+import { RecipeSortPipe } from './pipes/recipe-sort.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NewRecipeComponent } from './pages/new-recipe/new-recipe.component';
     RecipeDetailComponent,
     RecipeFormComponent,
     NewRecipeComponent,
+    RecipeSortPipe,
   ],
   imports: [SharedModule, RecipeRoutingModule],
 })

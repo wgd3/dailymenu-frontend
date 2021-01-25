@@ -3,13 +3,19 @@
 $border-radius: 8px;
 
 .recipe-container {
-  width: 21rem;
+  min-width: 17rem;
+  width: 17rem;
+  height: 21rem;
   display: flex;
   flex-flow: column nowrap;
   position: relative;
   word-wrap: break-word;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
   border-radius: $border-radius;
+  &-sm {
+    max-width: 17rem;
+    height: 21rem;
+  }
 }
 
 .no-recipe-text {
@@ -29,6 +35,9 @@ $border-radius: 8px;
 .recipe-body {
   flex: 1 1 auto;
   padding: variables.$spacer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   > .recipe-name {
     margin-bottom: variables.$spacer;
   }
@@ -48,7 +57,9 @@ $border-radius: 8px;
 
 .recipe-img-wrapper {
   width: 100%;
-  max-height: 18rem;
+  //max-height: 18rem;
+  height: 15rem;
+  min-height: 15rem;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -56,10 +67,31 @@ $border-radius: 8px;
   align-items: center;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
+
+  & .recipe-tag-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: all 3s ease;
+    display: none;
+    opacity: 0;
+    padding-right: 0.25 * variables.$spacer;
+    padding-bottom: 0.25 * variables.$spacer;
+    > .badge + .badge {
+      margin-left: 0.5 * variables.$spacer;
+    }
+  }
+
+  &:hover > .recipe-tag-overlay {
+    display: inline-block;
+    opacity: 1;
+  }
 }
 
 .recipe-img {
   transition: all 0.5s ease;
+  width: 150%;
+  height: auto;
   cursor: pointer;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
