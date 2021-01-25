@@ -11,6 +11,10 @@ export class RecipeCardComponent implements OnInit {
 
   @Input() public size: 'sm' | 'md' | 'lg' = 'md';
 
+  @Input() public deleteFromMeal: number;
+
+  @Input() public addToMeal: number;
+
   constructor() {}
 
   ngOnInit(): void {}
