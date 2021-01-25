@@ -26,19 +26,6 @@
   </div>
 </div>
 
-<!--<div class="row my-3" *ngIf="recipe.tags.length > 0">-->
-<!--  <div class="col d-flex justify-content-center align-items-center">-->
-<!--    <h6>-->
-<!--      <span-->
-<!--        class="badge badge-warning"-->
-<!--        *ngFor="let tag of recipe.tags; let i = index"-->
-<!--        [class.ml-3]="i > 0"-->
-<!--        >{{ tag.name }}</span-->
-<!--      >-->
-<!--    </h6>-->
-<!--  </div>-->
-<!--</div>-->
-
 <div class="row mb-3">
   <div class="col-md-6 order-1">
     <h5 class="mb-3 border-bottom">Nutrition</h5>
@@ -90,6 +77,44 @@
         </td>
       </tr>
     </table>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6 order-1">
+    <h5 class="mb-3 border-bottom">Ingredients</h5>
+  </div>
+
+  <div class="col-md-6 order-3 order-md-2">
+    <h5 class="mb-3 border-bottom">Steps</h5>
+  </div>
+
+  <div class="col-md-6 order-2 order-md-3">
+    <ol class="list-group list-group-flush">
+      <li
+        class="list-group-item"
+        [class.bg-light]="odd"
+        *ngFor="
+          let ingredient of ingredientArray.controls;
+          let even = even;
+          let odd = odd
+        "
+      >
+        {{ ingredient.value }}
+      </li>
+    </ol>
+  </div>
+
+  <div class="col-md-6 order-4">
+    <ol class="list-group list-group-flush">
+      <li
+        class="list-group-item"
+        [class.bg-light]="odd"
+        *ngFor="let step of stepArray.controls; let odd = odd"
+      >
+        {{ step.value }}
+      </li>
+    </ol>
   </div>
 </div>
 

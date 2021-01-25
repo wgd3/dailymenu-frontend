@@ -25,4 +25,7 @@ export interface IRecipe extends ITimestamp {
 
   tags?: IRecipeTag[];
   meals?: IMeal[];
+
+  ingredients?: string[];
+  steps?: string[];
 }
